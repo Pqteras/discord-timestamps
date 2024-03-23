@@ -1,6 +1,7 @@
 import { useState, useRef } from 'react';
 import DisplayOutput from './components/DisplayOutput';
 import Inputs from './components/Inputs'
+import { Analytics } from "@vercel/analytics/react"
 import './style/app.scss'
 
 function App() {
@@ -20,7 +21,7 @@ function App() {
     <>
       <div className="flex flex-col items-center justify-center my-8 mx-auto px-5 py-6 box-border gap-10 bg-violet-600 rounded-[10px] font-bold max-w-full sm:max-w-[800px]">
         <header className='text-2xl sm:text-4xl flex items-center gap-2 flex-wrap'>
-          <img src="../public/timestamp.svg" alt="Logo" className="h-12 w-12 sm:h-[45px] sm:w-[45px]" />
+          <img src="../timestamp.svg" alt="Logo" className="h-12 w-12 sm:h-[45px] sm:w-[45px]" />
           Discord Timestamps
         </header>
         <Inputs generatedTimestamp={handleTimestampGeneration} ref={inputRef}/>
@@ -32,6 +33,7 @@ function App() {
           Reset to current time
         </button>
       </div>
+      <Analytics />
     </>
   )
 }
