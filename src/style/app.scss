@@ -1,0 +1,17 @@
+body {
+    --s: 150px;
+
+    margin: 0;
+    padding: 0;
+    background:
+        linear-gradient(45deg,#0000 18.75%,#262626 0 31.25%,#0000 0),
+        repeating-linear-gradient(135deg,#262626 -6.25% 6.25%,#212121 0 18.75%);
+    background-size: var(--s) var(--s); 
+    font-family: "Nunito Sans", sans-serif;
+    min-height: 100vh;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+}
