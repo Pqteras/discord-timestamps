@@ -1,5 +1,5 @@
-import { useEffect } from 'react';
-import { motion } from 'framer-motion';
+import { useEffect } from "react";
+import { motion } from "framer-motion";
 
 const Toast = ({ message, onClose }) => {
   useEffect(() => {
@@ -15,7 +15,7 @@ const Toast = ({ message, onClose }) => {
       initial={{ opacity: 0, y: 50 }}
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: 50 }}
-      transition={{ type: 'spring', stiffness: 100, damping: 10 }}
+      transition={{ type: "spring", stiffness: 100, damping: 10 }}
     >
       {message}
     </motion.div>
@@ -23,4 +23,3 @@ const Toast = ({ message, onClose }) => {
 };
 
 export default Toast;
-

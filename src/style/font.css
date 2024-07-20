@@ -1,0 +1,30 @@
+@font-face {
+  font-family: "gg sans";
+  font-style: normal;
+  font-weight: 700; /* Bold */
+  src: local("gg sans Bold"), url("../font/gg sans Bold.woff") format("woff");
+}
+
+@font-face {
+  font-family: "gg sans";
+  font-style: normal;
+  font-weight: 400; /* Normal Regular */
+  src: local("gg sans Normal Regular"),
+    url("../font/gg sans Regular.woff") format("woff");
+}
+
+@font-face {
+  font-family: "gg sans";
+  font-style: normal;
+  font-weight: 500; /* Medium Regular */
+  src: local("gg sans Medium Regular"),
+    url("../font/gg sans Medium.woff") format("woff");
+}
+
+@font-face {
+  font-family: "gg sans";
+  font-style: normal;
+  font-weight: 600; /* SemiBold Regular */
+  src: local("gg sans SemiBold Regular"),
+    url("../font/gg sans Semibold.woff") format("woff");
+}
