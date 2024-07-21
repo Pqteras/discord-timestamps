@@ -7,14 +7,12 @@ import Toast from "./Toast";
 function DisplayOutput({ timestamp }) {
   const [formattedTimestamp, setFormattedTimestamp] = useState("");
   const [isToastVisible, setToastVisible] = useState(false);
-  const [isTimestampSet, setIsTimestampSet] = useState(false);
+  const [firstRender, setFirstRender] = useState(true);
 
   useEffect(() => {
     if (timestamp) {
       setFormattedTimestamp(formatDiscordTimestamp(timestamp));
-      if (!isTimestampSet) {
-        setIsTimestampSet(true);
-      }
+      setFirstRender(false);
     }
   }, [timestamp]);
 
@@ -33,60 +31,63 @@ function DisplayOutput({ timestamp }) {
 
   return (
     <>
-      {isTimestampSet && (
+      {formattedTimestamp && (
         <motion.div
           initial={{ opacity: 0, height: 0 }}
           animate={{ opacity: 1, height: "auto" }}
           transition={{ ease: "easeInOut", duration: 0.5 }}
-          className="output-container p-4"
+          className="output-container"
         >
-          <motion.h3
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{
-              ease: "easeInOut",
-              duration: 0.5,
-              delay: 0.5,
-            }}
-            className="text-lg font-semibold mb-2"
-          >
-            {formattedTimestamp}
-          </motion.h3>
-          <div className="flex items-stretch gap-2">
-            <motion.span
-              key={`${timestamp}-span`}
+          <div className="p-4">
+            <motion.h3
+              key={`${timestamp}-h3`}
               initial={{ opacity: 0, y: 50 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{
-                type: "spring",
-                stiffness: 100,
-                damping: 10,
-                duration: 0.5,
-                delay: 0.6,
+                ease: "easeInOut",
+                duration: 0.4,
+                delay: firstRender ? 0.5 : 0,
               }}
-              className="font-mono bg-gray-100 p-2 rounded text-black"
+              className="text-lg font-semibold mb-2"
             >
-              {timestamp}
-            </motion.span>
-            <motion.button
-              key={`${timestamp}-btn`}
-              initial={{ opacity: 0, x: -69 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{
-                type: "spring",
-                stiffness: 100,
-                damping: 13,
-                delay: 0.7,
-              }}
-              onClick={copyToClipboard}
-              className="px-4 py-2 bg-blue-700 text-white rounded hover:bg-blue-600 transition-colors"
-            >
-              <LuClipboardCopy size="1.2rem" />
-            </motion.button>
+              {formattedTimestamp}
+            </motion.h3>
+            <div className="flex items-stretch gap-2">
+              <motion.span
+                key={`${timestamp}-span`}
+                initial={{ opacity: 0, y: 50 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{
+                  type: "spring",
+                  stiffness: 100,
+                  damping: 10,
+                  duration: 0.4,
+                  delay: firstRender ? 0.6 : 0.1,
+                }}
+                className="font-mono bg-gray-100 p-2 rounded text-black"
+              >
+                {timestamp}
+              </motion.span>
+              <motion.button
+                key={`${timestamp}-btn`}
+                initial={{ opacity: 0, x: -69 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{
+                  type: "spring",
+                  stiffness: 100,
+                  damping: 13,
+                  delay: firstRender ? 0.7 : 0.4,
+                }}
+                onClick={copyToClipboard}
+                className="px-4 py-2 bg-blue-700 text-white rounded hover:bg-blue-600 transition-colors"
+              >
+                <LuClipboardCopy size="1.2rem" />
+              </motion.button>
+            </div>
           </div>
         </motion.div>
       )}
-      {!isTimestampSet && (
+      {!formattedTimestamp && (
         <p className="text-white text-xl">Enter a Date & Time to get started</p>
       )}
       <AnimatePresence>

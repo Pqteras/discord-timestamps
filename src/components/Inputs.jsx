@@ -52,7 +52,7 @@ const Inputs = forwardRef(({ generatedTimestamp }, ref) => {
             id="date"
             value={date}
             onChange={handleDateChange}
-            className="text-black p-2 border rounded focus:outline-none focus:ring-2 focus:ring-yellow-300 uppercase w-[150px]"
+            className="text-black p-2 border rounded focus:outline-none focus:ring-2 focus:ring-yellow-300 uppercase w-[140px] sm:w-[150px]"
           />
         </div>
         <div className="flex justify-between items-center w-full flex-wrap">
@@ -66,7 +66,7 @@ const Inputs = forwardRef(({ generatedTimestamp }, ref) => {
             id="time"
             value={time}
             onChange={handleTimeChange}
-            className="text-black p-2 border rounded focus:outline-none focus:ring-2 focus:ring-yellow-300 w-[150px]"
+            className="text-black p-2 border rounded focus:outline-none focus:ring-2 focus:ring-yellow-300 w-[140px] sm:w-[150px]"
           />
         </div>
         <TimestampOptionsDropdown onSelect={handleStyleSelect} />

@@ -3,14 +3,17 @@ import { RiBrush2Line } from "react-icons/ri";
 const TimestampOptionsDropdown = ({ onSelect }) => {
   return (
     <div className="flex justify-between items-center w-full">
-      <label htmlFor="timestamp-style" className="text-2xl flex items-center gap-1">
-        <RiBrush2Line className="text-3xl text-purple-500"/>
+      <label
+        htmlFor="timestamp-style"
+        className="text-2xl flex items-center gap-1"
+      >
+        <RiBrush2Line className="text-3xl text-purple-500" />
         STYLE
       </label>
       <select
         name="timestamp-style"
         id="timestamp-style"
-        className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded block p-2.5 w-[150px]"
+        className="bg-gray-50 border border-gray-300 text-gray-900 rounded block p-2.5 w-[140px] sm:w-[150px]"
         onChange={(e) => onSelect(e.target.value)}
       >
         <option value="R">Relative Time</option>
@@ -23,6 +26,6 @@ const TimestampOptionsDropdown = ({ onSelect }) => {
       </select>
     </div>
   );
-}
+};
 
 export default TimestampOptionsDropdown;

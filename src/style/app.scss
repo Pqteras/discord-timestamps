@@ -7,10 +7,5 @@ body {
     repeating-linear-gradient(135deg, #262626 -6.25% 6.25%, #212121 0 18.75%);
   background-size: var(--s) var(--s);
   font-family: "gg sans", monospace;
-  min-height: 100vh;
   color: white;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  box-sizing: border-box;
 }

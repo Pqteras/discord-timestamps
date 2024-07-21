@@ -20,10 +20,10 @@ function App() {
   const handleReset = () => inputRef.current.reset();
 
   return (
-    <>
-      <div className="flex flex-col items-center justify-center my-8 mx-2 px-8 py-6 box-border gap-8 bg-[#191919] rounded-lg font-bold max-w-[400px] sm:w-[400px] w-auto">
-        <header className="text-2xl sm:text-4xl flex items-center gap-2 flex-wrap">
-          <PiClockCountdownBold className="text-yellow-500"/>
+    <div className="flex items-center justify-center h-screen">
+      <div className="flex flex-col items-center justify-center p-6 mx-4 box-border gap-8 bg-[#191919] rounded-lg font-bold max-w-[400px] sm:w-[400px] w-full">
+        <header className="text-3xl sm:text-4xl flex items-center gap-2 flex-wrap">
+          <PiClockCountdownBold className="text-5xl text-yellow-500"/>
           DiscordStamps
         </header>
         <Inputs generatedTimestamp={handleTimestampGeneration} ref={inputRef} />
@@ -36,7 +36,7 @@ function App() {
         </button>
       </div>
       <Analytics />
-    </>
+    </div>
   );
 }
 
