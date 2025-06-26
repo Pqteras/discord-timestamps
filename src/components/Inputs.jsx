@@ -3,7 +3,6 @@ import TimestampOptionsDropdown from "./TimestampOptions";
 import { LuClock } from "react-icons/lu";
 import { TbCalendarHeart } from "react-icons/tb";
 
-
 const Inputs = forwardRef(({ generatedTimestamp }, ref) => {
   const [date, setDate] = useState("");
   const [time, setTime] = useState("");
@@ -43,7 +42,7 @@ const Inputs = forwardRef(({ generatedTimestamp }, ref) => {
       <div className="flex gap-4 items-center flex-wrap flex-col w-full">
         <div className="flex justify-between items-center w-full flex-wrap">
           <label htmlFor="date" className="text-2xl flex items-center gap-1">
-            <TbCalendarHeart className="text-3xl text-red-500"/>
+            <TbCalendarHeart className="text-3xl text-red-500" />
             DATE
           </label>
           <input
@@ -57,7 +56,7 @@ const Inputs = forwardRef(({ generatedTimestamp }, ref) => {
         </div>
         <div className="flex justify-between items-center w-full flex-wrap">
           <label htmlFor="time" className="text-2xl flex items-center gap-1">
-            <LuClock className="text-3xl text-green-500"/>
+            <LuClock className="text-3xl text-green-500" />
             TIME
           </label>
           <input
