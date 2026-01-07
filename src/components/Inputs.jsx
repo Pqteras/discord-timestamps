@@ -1,7 +1,7 @@
 import { useState, useEffect, useImperativeHandle, forwardRef } from "react";
 import TimestampOptionsDropdown from "./TimestampOptions";
-import { LuClock } from "react-icons/lu";
-import { TbCalendarHeart } from "react-icons/tb";
+import { LuClock, LuCalendar } from "react-icons/lu";
+import { motion } from "motion/react";
 
 const Inputs = forwardRef(({ generatedTimestamp }, ref) => {
   const [date, setDate] = useState("");
@@ -37,41 +37,66 @@ const Inputs = forwardRef(({ generatedTimestamp }, ref) => {
     reset: resetInputsToCurrentTime,
   }));
 
+  const inputClasses =
+    "w-35 sm:w-40 px-3 py-2.5 bg-white/5 border border-white/10 rounded-xl text-white focus:outline-none focus:border-purple-500/50 focus:ring-2 focus:ring-purple-500/20 backdrop-blur-md transition-all shadow-sm uppercase font-mono text-sm sm:text-base";
+
   return (
-    <>
-      <div className="flex gap-4 items-center flex-wrap flex-col w-full">
-        <div className="flex justify-between items-center w-full flex-wrap">
-          <label htmlFor="date" className="text-2xl flex items-center gap-1">
-            <TbCalendarHeart className="text-3xl text-red-500" />
-            DATE
-          </label>
-          <input
-            type="date"
-            name="date"
-            id="date"
-            value={date}
-            onChange={handleDateChange}
-            className="text-black p-2 border rounded focus:outline-none focus:ring-2 focus:ring-yellow-300 uppercase w-[140px] sm:w-[150px]"
-          />
-        </div>
-        <div className="flex justify-between items-center w-full flex-wrap">
-          <label htmlFor="time" className="text-2xl flex items-center gap-1">
-            <LuClock className="text-3xl text-green-500" />
-            TIME
-          </label>
-          <input
-            type="time"
-            name="time"
-            id="time"
-            value={time}
-            onChange={handleTimeChange}
-            className="text-black p-2 border rounded focus:outline-none focus:ring-2 focus:ring-yellow-300 w-[140px] sm:w-[150px]"
-          />
-        </div>
-        <TimestampOptionsDropdown onSelect={handleStyleSelect} />
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      className="flex gap-6 items-center flex-wrap flex-col w-full"
+    >
+      {/* Date Input */}
+      <div className="flex justify-between items-center w-full group">
+        <label
+          htmlFor="date"
+          className="text-xl sm:text-2xl flex items-center gap-2 font-semibold text-white/90"
+        >
+          <div className="p-2 bg-red-500/20 rounded-lg backdrop-blur-md border border-red-500/30 group-hover:bg-red-500/30 transition-colors">
+            <LuCalendar className="text-xl sm:text-2xl text-red-400" />
+          </div>
+          Date
+        </label>
+        <input
+          type="date"
+          name="date"
+          id="date"
+          value={date}
+          onChange={handleDateChange}
+          onClick={(e) => e.target.showPicker && e.target.showPicker()}
+          className={inputClasses}
+          style={{ colorScheme: "dark" }}
+        />
       </div>
-    </>
+
+      {/* Time Input */}
+      <div className="flex justify-between items-center w-full group">
+        <label
+          htmlFor="time"
+          className="text-xl sm:text-2xl flex items-center gap-2 font-semibold text-white/90"
+        >
+          <div className="p-2 bg-green-500/20 rounded-lg backdrop-blur-md border border-green-500/30 group-hover:bg-green-500/30 transition-colors">
+            <LuClock className="text-xl sm:text-2xl text-green-400" />
+          </div>
+          Time
+        </label>
+        <input
+          type="time"
+          name="time"
+          id="time"
+          value={time}
+          onChange={handleTimeChange}
+          onClick={(e) => e.target.showPicker && e.target.showPicker()}
+          className={inputClasses}
+          style={{ colorScheme: "dark" }}
+        />
+      </div>
+
+      <TimestampOptionsDropdown onSelect={handleStyleSelect} />
+    </motion.div>
   );
 });
+
+Inputs.displayName = "Inputs";
 
 export default Inputs;
